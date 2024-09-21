@@ -8,6 +8,7 @@
             {
                 "square" => new ShapeSquare(),
                 "circle" => new ShapeCircle(),
+                "rectangle" => new ShapeRectangle(),
                  _ => throw new Exception("Shape not supported")
             };
         }

@@ -10,7 +10,7 @@ namespace PolymorphismWithShapes
             return GetShapeCore(shapeType);
         }
 
-        protected Image GenerateShape(string shapeType, Color backgroundColor, Color forgroundColor, string text, Square? square = null, Circle? circle = null)
+        protected Image GenerateShape(string shapeType, Color backgroundColor, Color forgroundColor, string text, Square? square = null, Circle? circle = null, Models.Rectangle? rectangle = null)
         {
             Bitmap bitmap = null;
 
@@ -21,6 +21,9 @@ namespace PolymorphismWithShapes
                     break;
                 case "circle":
                     bitmap = new Bitmap(circle.Radius, circle.Radius);
+                    break;
+                case "rectangle":
+                    bitmap = new Bitmap(rectangle.Width, rectangle.Height);
                     break;
                 default:
                     break;
@@ -44,6 +47,10 @@ namespace PolymorphismWithShapes
                         case "circle":
                             graphics.FillEllipse(backgroundBrush, 0, 0, circle.Radius, circle.Radius);
                             graphics.DrawString(text, font, foregroundBrush, 90, 150);
+                            break;
+                        case "rectangle":
+                            graphics.FillRectangle(backgroundBrush, 0, 0, rectangle.Width, rectangle.Height);
+                            graphics.DrawString(text, font, foregroundBrush, 10, 10);
                             break;
                         default:
                             break;
@@ -69,7 +76,7 @@ namespace PolymorphismWithShapes
         {
             var square = new Square(450);
 
-            return GenerateShape(shapeType.Type, Color.Orange, Color.White, "I am a square!", square, null);
+            return GenerateShape(shapeType.Type, Color.Orange, Color.White, "I am a square!", square);
         }
     }
 
@@ -77,7 +84,9 @@ namespace PolymorphismWithShapes
     {
         protected override Image GetShapeCore(ShapeTypes shapeType)
         {
-            throw new NotImplementedException();
+            var rectangle = new Models.Rectangle(450, 250);
+
+            return GenerateShape(shapeType.Type, Color.Orange, Color.White, "I am a rectangle!", null, null, rectangle);
         }
     }
 
