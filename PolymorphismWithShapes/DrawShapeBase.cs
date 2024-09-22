@@ -10,7 +10,7 @@ namespace PolymorphismWithShapes
             return GetShapeCore(shapeType);
         }
 
-        protected Image GenerateShape(string shapeType, Color backgroundColor, Color forgroundColor, string text, Square? square = null, Circle? circle = null, Models.Rectangle? rectangle = null)
+        protected Image GenerateShape(string shapeType, Color backgroundColor, Color forgroundColor, string text, Square? square = null, Circle? circle = null, Models.Rectangle? rectangle = null, Triangle? triangle = null)
         {
             Bitmap bitmap = null;
 
@@ -24,6 +24,9 @@ namespace PolymorphismWithShapes
                     break;
                 case "rectangle":
                     bitmap = new Bitmap(rectangle.Width, rectangle.Height);
+                    break;
+                case "triangle":
+                    bitmap = new Bitmap(1000, 800);
                     break;
                 default:
                     break;
@@ -51,6 +54,10 @@ namespace PolymorphismWithShapes
                         case "rectangle":
                             graphics.FillRectangle(backgroundBrush, 0, 0, rectangle.Width, rectangle.Height);
                             graphics.DrawString(text, font, foregroundBrush, 10, 10);
+                            break;
+                        case "triangle":
+                            graphics.FillPolygon(backgroundBrush, new Point[] { new(triangle.VectorOneX, triangle.VectorOneY), new(triangle.VectorTwoX, triangle.VectorTwoY), new(triangle.VectorThreeX, triangle.VectorThreeY) });
+                            graphics.DrawString(text, font, foregroundBrush, 145, 400);
                             break;
                         default:
                             break;
@@ -97,6 +104,16 @@ namespace PolymorphismWithShapes
             var circle = new Circle(350);
 
             return GenerateShape(shapeType.Type, Color.Orange, Color.White, "I am a circle!", null, circle);
+        }
+    }
+
+    internal class ShapeTriangle : DrawShapeBase
+    {
+        protected override Image GetShapeCore(ShapeTypes shapeType)
+        {
+            var triangle = new Triangle(10, 450, 225, 20, 460, 450);
+
+            return GenerateShape(shapeType.Type, Color.Orange, Color.White, "I am a triangle", null, null, null, triangle);
         }
     }
 }

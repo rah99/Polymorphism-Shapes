@@ -11,6 +11,7 @@ namespace DisplayShapes
             comboBox1.Items.Add(new ShapeTypeDisplay("Square"));
             comboBox1.Items.Add(new ShapeTypeDisplay("Rectangle"));
             comboBox1.Items.Add(new ShapeTypeDisplay("Circle"));
+            comboBox1.Items.Add(new ShapeTypeDisplay("Triangle"));
         }
 
         private void button1_Click(object sender, EventArgs e)
