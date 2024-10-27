@@ -16,11 +16,19 @@ namespace DisplayShapes
 
         private void button1_Click(object sender, EventArgs e)
         {
-            var selectedShape = ((ShapeTypeDisplay)comboBox1.SelectedItem).ShapeName;
-            var shapeType = new ShapeTypes(selectedShape);
+            if (comboBox1.SelectedIndex == -1)
+            {
+                textBox1.Visible = true;
+            }
+            else
+            {
+                textBox1.Visible = false;
+                var selectedShape = ((ShapeTypeDisplay)comboBox1.SelectedItem).ShapeName;
+                var shapeType = new ShapeTypes(selectedShape);
 
-            DrawShapeBase drawShape = ShapeFactory.CreateShape(shapeType.Type);
-            pictureBox1.Image = drawShape.GetShape(shapeType);
+                DrawShapeBase drawShape = ShapeFactory.CreateShape(shapeType.Type);
+                pictureBox1.Image = drawShape.GetShape(shapeType);
+            }
         }
 
         public class ShapeTypeDisplay(string shapeName)
