@@ -113,7 +113,7 @@ namespace PolymorphismWithShapes
         {
             var triangle = new Triangle(10, 450, 225, 20, 460, 450);
 
-            return GenerateShape(shapeType.Type, Color.Orange, Color.White, "I am a triangle", null, null, null, triangle);
+            return GenerateShape(shapeType.Type, Color.Orange, Color.White, "I am a triangle!", null, null, null, triangle);
         }
     }
 }
