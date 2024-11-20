@@ -12,7 +12,7 @@ namespace PolymorphismWithShapes
 
         protected Image GenerateShape(string shapeType, Color backgroundColor, Color forgroundColor, string text, Square? square = null, Circle? circle = null, Models.Rectangle? rectangle = null, Triangle? triangle = null)
         {
-            Bitmap bitmap = null;
+            Bitmap? bitmap = null;
 
             switch (shapeType.ToLower())
             {
@@ -36,10 +36,10 @@ namespace PolymorphismWithShapes
             {
                 if (null != bitmap)
                 {
-                    using var graphics = Graphics.FromImage(bitmap);
-                    using var backgroundBrush = new SolidBrush(backgroundColor);
-                    using var foregroundBrush = new SolidBrush(forgroundColor);
-                    using var font = new Font("Arial", 20f);
+                    using Graphics? graphics = Graphics.FromImage(bitmap);
+                    using SolidBrush? backgroundBrush = new SolidBrush(backgroundColor);
+                    using SolidBrush? foregroundBrush = new SolidBrush(forgroundColor);
+                    using Font? font = new Font("Arial", 20f);
 
                     switch (shapeType.ToLower())
                     {
