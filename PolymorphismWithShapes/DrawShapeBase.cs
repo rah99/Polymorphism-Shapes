@@ -16,16 +16,16 @@ namespace PolymorphismWithShapes
 
             switch (shapeType.ToLower())
             {
-                case "square":
+                case Common.Constants.ShapeConstants.Square:
                     bitmap = new Bitmap(square.WidthHeight, square.WidthHeight);
                     break;
-                case "circle":
+                case Common.Constants.ShapeConstants.Circle:
                     bitmap = new Bitmap(circle.Radius, circle.Radius);
                     break;
-                case "rectangle":
+                case Common.Constants.ShapeConstants.Rectangle:
                     bitmap = new Bitmap(rectangle.Width, rectangle.Height);
                     break;
-                case "triangle":
+                case Common.Constants.ShapeConstants.Triangle:
                     bitmap = new Bitmap(1000, 800);
                     break;
                 default:
@@ -43,19 +43,19 @@ namespace PolymorphismWithShapes
 
                     switch (shapeType.ToLower())
                     {
-                        case "square":
+                        case Common.Constants.ShapeConstants.Square:
                             graphics.FillRectangle(backgroundBrush, 0, 0, square.WidthHeight, square.WidthHeight);
                             graphics.DrawString(text, font, foregroundBrush, 10, 10);
                             break;
-                        case "circle":
+                        case Common.Constants.ShapeConstants.Circle:
                             graphics.FillEllipse(backgroundBrush, 0, 0, circle.Radius, circle.Radius);
                             graphics.DrawString(text, font, foregroundBrush, 90, 150);
                             break;
-                        case "rectangle":
+                        case Common.Constants.ShapeConstants.Rectangle:
                             graphics.FillRectangle(backgroundBrush, 0, 0, rectangle.Width, rectangle.Height);
                             graphics.DrawString(text, font, foregroundBrush, 10, 10);
                             break;
-                        case "triangle":
+                        case Common.Constants.ShapeConstants.Triangle:
                             graphics.FillPolygon(backgroundBrush, new Point[] { new(triangle.VectorOneX, triangle.VectorOneY), new(triangle.VectorTwoX, triangle.VectorTwoY), new(triangle.VectorThreeX, triangle.VectorThreeY) });
                             graphics.DrawString(text, font, foregroundBrush, 145, 400);
                             break;
@@ -83,7 +83,7 @@ namespace PolymorphismWithShapes
         {
             var square = new Square(450);
 
-            return GenerateShape(shapeType.Type, Color.Orange, Color.White, "I am a square!", square);
+            return GenerateShape(shapeType.Type, Color.Orange, Color.White, Common.Constants.DisplayTextConstants.Square, square);
         }
     }
 
@@ -93,7 +93,7 @@ namespace PolymorphismWithShapes
         {
             var rectangle = new Models.Rectangle(450, 250);
 
-            return GenerateShape(shapeType.Type, Color.Orange, Color.White, "I am a rectangle!", null, null, rectangle);
+            return GenerateShape(shapeType.Type, Color.Orange, Color.White, Common.Constants.DisplayTextConstants.Rectangle, null, null, rectangle);
         }
     }
 
@@ -103,7 +103,7 @@ namespace PolymorphismWithShapes
         {
             var circle = new Circle(350);
 
-            return GenerateShape(shapeType.Type, Color.Orange, Color.White, "I am a circle!", null, circle);
+            return GenerateShape(shapeType.Type, Color.Orange, Color.White, Common.Constants.DisplayTextConstants.Circle, null, circle);
         }
     }
 
@@ -113,7 +113,7 @@ namespace PolymorphismWithShapes
         {
             var triangle = new Triangle(10, 450, 225, 20, 460, 450);
 
-            return GenerateShape(shapeType.Type, Color.Orange, Color.White, "I am a triangle!", null, null, null, triangle);
+            return GenerateShape(shapeType.Type, Color.Orange, Color.White, Common.Constants.DisplayTextConstants.Triangle, null, null, null, triangle);
         }
     }
 }

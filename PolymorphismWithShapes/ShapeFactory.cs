@@ -6,11 +6,11 @@
         {
             return shapeName.ToLower() switch
             {
-                "square" => new ShapeSquare(),
-                "circle" => new ShapeCircle(),
-                "rectangle" => new ShapeRectangle(),
-                "triangle" => new ShapeTriangle(),
-                 _ => throw new Exception("Shape not supported")
+                Common.Constants.ShapeConstants.Square => new ShapeSquare(),
+                Common.Constants.ShapeConstants.Circle => new ShapeCircle(),
+                Common.Constants.ShapeConstants.Rectangle => new ShapeRectangle(),
+                Common.Constants.ShapeConstants.Triangle => new ShapeTriangle(),
+                 _ => throw new Exception(Common.Constants.ErrorConstants.ShapeNotSupported)
             };
         }
     }

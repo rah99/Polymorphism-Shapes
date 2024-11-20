@@ -1,5 +1,6 @@
 using PolymorphismWithShapes;
 using PolymorphismWithShapes.Models;
+using System.Globalization;
 
 namespace DisplayShapes
 {
@@ -7,11 +8,12 @@ namespace DisplayShapes
     {
         public Form1()
         {
+            TextInfo textInfo = CultureInfo.CurrentCulture.TextInfo;
             InitializeComponent();
-            comboBox1.Items.Add(new ShapeTypeDisplay("Square"));
-            comboBox1.Items.Add(new ShapeTypeDisplay("Rectangle"));
-            comboBox1.Items.Add(new ShapeTypeDisplay("Circle"));
-            comboBox1.Items.Add(new ShapeTypeDisplay("Triangle"));
+            comboBox1.Items.Add(new ShapeTypeDisplay(textInfo.ToTitleCase(Common.Constants.ShapeConstants.Square)));
+            comboBox1.Items.Add(new ShapeTypeDisplay(textInfo.ToTitleCase(Common.Constants.ShapeConstants.Rectangle)));
+            comboBox1.Items.Add(new ShapeTypeDisplay(textInfo.ToTitleCase(Common.Constants.ShapeConstants.Circle)));
+            comboBox1.Items.Add(new ShapeTypeDisplay(textInfo.ToTitleCase(Common.Constants.ShapeConstants.Triangle)));
         }
 
         private void button1_Click(object sender, EventArgs e)
